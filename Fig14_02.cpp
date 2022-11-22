@@ -23,7 +23,7 @@ int main()
 
     // ofstream outClientFile{"clients.txt", ios ::out};
     ofstream outClientFile;
-    outClientFile.open("clients.txt", ios ::out);
+    outClientFile.open("clients.txt", ios ::app);
 
     // exit program if unable to create file
     if (!outClientFile) // overloaded ! operator
