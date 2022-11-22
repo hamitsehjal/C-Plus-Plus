@@ -21,10 +21,13 @@ int main()
     // 3. std::fstream has neither ios::in or ios::out automatically
     // set.
 
-    // ofstream outClientFile{"clients.txt", ios ::out};
-    ofstream outClientFile;
-    outClientFile.open("clients.txt", ios ::app);
+    // ofstream outClientFile{"clients.txt", ios ::out};  // FIRST WAY
 
+    // SECOND - WAY
+    ofstream outClientFile;
+    outClientFile.open("clients.txt", ios ::ate);
+
+    //** IMPORTANT --> the overload ios operator "!" returns ture if either the "failbit" or "badbit" is set for the streaml
     // exit program if unable to create file
     if (!outClientFile) // overloaded ! operator
     {
@@ -46,7 +49,6 @@ int main()
     //     1. StackOverflow: https://stackoverflow.com/questions/15202697/using-return-value-of-extraction-operator-in-condition
     //     3. Book: Pg-582 - How to Program C++ ( Harvey and Paul Dietal)
 
-
     while (cin >> account >> name >> balance)
     {
 
@@ -54,4 +56,6 @@ int main()
             << account << " " << name << " " << balance << endl;
         cout << "?";
     }
+    outClientFile.close();
+    return 0;
 }
